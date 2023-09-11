@@ -7,7 +7,7 @@ name = "django-schema-viewer"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 license = "MIT"
 keywords = [
   'django',
@@ -30,8 +30,6 @@ authors = [
 classifiers = [
   "Development Status :: 4 - Beta",
   'Environment :: Web Environment',
-  'Framework :: Django :: 3.1',
-  'Framework :: Django :: 3.2',
   'Framework :: Django :: 4.0',
   'Framework :: Django :: 4.1',
   'Framework :: Django :: 4.2',
@@ -40,9 +38,6 @@ classifiers = [
   "Programming Language :: Python",
   'Programming Language :: Python :: 3',
   'Programming Language :: Python :: 3 :: Only',
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -50,7 +45,7 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = [
-  'Django>=3.1, <4.3',
+  'Django>=4.0, <4.3',
 ]
 
 [project.urls]
@@ -73,10 +68,11 @@ include = [
 dependencies = [
   "coverage[toml]>=6.5",
   "pytest",
+  "pytest-django",
 ]
 [tool.hatch.envs.default.scripts]
-test = "pytest {args:tests}"
-test-cov = "coverage run -m pytest {args:tests}"
+test = "pytest {args:schema_viewer/tests}"
+test-cov = "coverage run -m pytest {args:schema_viewer/tests}"
 cov-report = [
   "- coverage combine",
   "coverage report",
@@ -86,8 +82,16 @@ cov = [
   "cov-report",
 ]
 
+[tool.hatch.envs.all.overrides]
+matrix.django.dependencies = [
+  {value='Django~=4.0.0', if=['4.0']},
+  {value='Django~=4.1.0', if=['4.1']},
+  {value='Django~=4.2.0', if=['4.2']},
+]
+
 [[tool.hatch.envs.all.matrix]]
-python = ["3.7", "3.8", "3.9", "3.10", "3.11"]
+python = ["3.10", "3.11", "3.12"]
+django = ["4.0", "4.1", "4.2"]
 
 [tool.hatch.envs.typing]
 dependecies = [
@@ -95,14 +99,15 @@ dependecies = [
 ]
 
 [tool.hatch.envs.lint]
-#detached = true
+detached = true
 dependencies = [
   "black>=23.1.0",
   "mypy>=1.0.0",
   "ruff>=0.0.243",
+  "django-stubs[compatible-mypy]",
 ]
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:schema_viewer tests}"
+typing = "mypy --install-types --non-interactive {args:schema_viewer}"
 style = [
   "isort {args:schema_viewer}",
   "ruff {args:schema_viewer}",
@@ -118,6 +123,9 @@ all = [
   "typing",
 ]
 
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "conf.settings"
+
 [tool.mypy]
 plugins = ["mypy_django_plugin.main"]
 
@@ -125,7 +133,7 @@ plugins = ["mypy_django_plugin.main"]
 django_settings_module = "conf.settings"
 
 [tool.black]
-target-version = ["py37"]
+target-version = ["py3.10"]
 line-length = 120
 skip-string-normalization = true
 
@@ -133,7 +141,7 @@ skip-string-normalization = true
 src = [
   'schema_viewer',
 ]
-target-version = "py37"
+target-version = "py3.10"
 line-length = 120
 select = [
   "A",
@@ -191,16 +199,12 @@ ban-relative-imports = "all"
 "tests/**/*" = ["PLR2004", "S101", "TID252"]
 
 [tool.coverage.run]
-source_pkgs = ["schema_viewer", "tests"]
+source_pkgs = ["schema_viewer"]
 branch = true
 parallel = true
 omit = [
   "schema_viewer/__about__.py",
 ]
-
-[tool.coverage.paths]
-django_schema_viewer = ["schema_viewer", "*/django-schema-viewer/schema_viewer"]
-tests = ["tests", "*/django-schema-viewer/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
