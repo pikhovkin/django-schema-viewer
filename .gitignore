@@ -110,4 +110,5 @@ venv.bak/
 # My local notes
 .notes
 
-frontend/
+/frontend
+/data

@@ -1,0 +1,41 @@
+{
+  "listeners": {
+    "0.0.0.0:8000": {
+      "pass": "routes/app"
+    }
+  },
+  "routes": {
+    "app": [
+      {
+        "match": {
+          "uri": "/static/*"
+        },
+        "action": {
+          "share": "/app/data$uri"
+        }
+      },
+      {
+        "match": {
+          "uri": "/media/*"
+        },
+        "action": {
+          "share": "/app/data$uri"
+        }
+      },
+      {
+        "action": {
+          "pass": "applications/app"
+        }
+      }
+    ]
+  },
+  "applications": {
+    "app": {
+      "type": "python 3.11",
+      "path": "/app/",
+      "module": "tests.conf.wsgi",
+      "processes": 1,
+      "threads": 4
+    }
+  }
+}
