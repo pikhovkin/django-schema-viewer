@@ -124,16 +124,16 @@ all = [
 ]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "conf.settings"
+DJANGO_SETTINGS_MODULE = "tests.conf.settings"
 
 [tool.mypy]
 plugins = ["mypy_django_plugin.main"]
 
 [tool.django-stubs]
-django_settings_module = "conf.settings"
+django_settings_module = "tests.conf.settings"
 
 [tool.black]
-target-version = ["py3.10"]
+target-version = ["py310"]
 line-length = 120
 skip-string-normalization = true
 
@@ -141,7 +141,7 @@ skip-string-normalization = true
 src = [
   'schema_viewer',
 ]
-target-version = "py3.10"
+target-version = "py310"
 line-length = 120
 select = [
   "A",
