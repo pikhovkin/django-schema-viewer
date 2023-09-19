@@ -12,7 +12,7 @@
 
 Visualizes the DB schema based on Django models.
 
-[![django-schema-viewer screen](docs/screenview.png "Click to see demo")](https://django-schema-viewer.up.railway.app/schema-viewer/)
+[![django-schema-viewer demo](docs/screenview.png "Click to see demo")](https://django-schema-viewer.up.railway.app/schema-viewer/)
 
 ### Installation
 
