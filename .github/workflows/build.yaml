@@ -71,6 +71,8 @@ jobs:
     if: github.event_name == 'release' && github.event.action == 'created'
     needs: [test]
     runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: tests.conf.settings.demo
     steps:
       - uses: actions/checkout@v3
       - name: Docker login

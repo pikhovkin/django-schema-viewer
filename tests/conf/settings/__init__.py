@@ -64,16 +64,10 @@ WSGI_APPLICATION = 'tests.conf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DB_DIR = BASE_DIR.parent / 'data' / 'db'
-DB_DIR.mkdir(parents=False, exist_ok=True)
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': ':memory:',
-    # },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DB_DIR / 'db.sqlite3',
+        'NAME': ':memory:',
     },
 }
 
@@ -112,7 +106,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = BASE_DIR.parent / 'data' / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 
 # Default primary key field type
