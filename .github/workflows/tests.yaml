@@ -1,10 +1,10 @@
-name: build
+name: tests
 
 on:
   push:
-    branches:
+    branches: [main]
   pull_request:
-    branches:
+    branches: [main]
   release:
     types: [created]
 
