@@ -104,6 +104,7 @@ dependencies = [
   "black>=23.1.0",
   "mypy>=1.0.0",
   "ruff>=0.0.243",
+  "isort",
   "django-stubs[compatible-mypy]",
 ]
 [tool.hatch.envs.lint.scripts]
