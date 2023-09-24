@@ -14,4 +14,4 @@ class SchemaTest(TestCase):
             'django_session',
         }
         schema = get_schema()
-        self.assertTrue({t['name'] for t in schema['resources']}, tables)
+        self.assertTrue({t['name'] for t in schema['resources']} == tables)
