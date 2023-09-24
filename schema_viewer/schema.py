@@ -76,6 +76,8 @@ def get_schema(conf: dict | None = None) -> dict:
                 continue
             elif field.many_to_many:
                 continue
+            elif field.model is not model:
+                continue
 
             field_name: str = field.attname
             db_type: str | None = field.db_type(connection)
@@ -94,8 +96,6 @@ def get_schema(conf: dict | None = None) -> dict:
                     },
                 }
             )
-            if field.primary_key:
-                schema_primary_key.append(field_name)
             if field.is_relation:
                 rel_model = cast(type[models.Model], field.related_model)
                 if rel_model is None:
@@ -121,4 +121,6 @@ def get_schema(conf: dict | None = None) -> dict:
                         },
                     }
                 )
+            elif field.primary_key:
+                schema_primary_key.append(field_name)
     return json_table_schema
