@@ -10,7 +10,7 @@
 [![Hatch project](https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg)](https://github.com/pypa/hatch)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-Visualizes the DB schema based on Django models.
+Visualizes a DB schema based on Django models.
 
 [![django-schema-viewer demo](docs/screenview.png "Click to see demo")](https://django-schema-viewer.up.railway.app/schema-viewer/)
 
