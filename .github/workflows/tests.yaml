@@ -53,7 +53,7 @@ jobs:
         auth: ${{ secrets.COVERAGE_TOKEN }}
         gistID: dc6f561d32b4e4e6d6f05bfd59c4ffaf
         filename: covbadge.json
-        label: Coverage
+        label: coverage
         message: ${{ env.COVERED_DISPLAY }}%
         valColorRange: ${{ env.COVERED_DISPLAY }}
         maxColorRange: 90
