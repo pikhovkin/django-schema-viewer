@@ -1,0 +1,49 @@
+name: autoversion
+
+on:
+  workflow_dispatch:
+    inputs:
+      version-segment:
+        description: Version segment
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+
+jobs:
+  release:
+    env:
+      VERSION_SEGMENT: ${{ github.event.inputs.version-segment }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install hatch
+    - name: Push new version on github
+      run: |
+        CHANGELOG=$(hatch version $VERSION_SEGMENT)
+        echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
+        TAG=$(hatch version)
+        echo "TAG=$TAG" >> $GITHUB_ENV
+        git config --global user.email "auto@version"
+        git config --global user.name "autoversion"
+        git commit -am "Release: $TAG
+        
+        $CHANGELOG"
+        git tag "$TAG"
+        git push && git push --tags
+    - name: Publish release on github
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        gh release create ${{ env.TAG }} --title "${{ env.TAG }}" --notes "${{ env.CHANGELOG }}"
