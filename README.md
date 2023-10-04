@@ -1,6 +1,7 @@
 # django-schema-viewer
 
-[![GitHub Actions](https://github.com/pikhovkin/django-schema-viewer/actions/workflows/tests.yml/badge.svg)](https://github.com/pikhovkin/django-schema-viewer/actions)
+[![GitHub Actions](https://github.com/pikhovkin/django-schema-viewer/actions/workflows/tests.yaml/badge.svg)](https://github.com/pikhovkin/django-schema-viewer/actions)
+![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/pikhovkin/dc6f561d32b4e4e6d6f05bfd59c4ffaf/raw/covbadge.json)
 [![PyPI - Version](https://img.shields.io/pypi/v/django-schema-viewer.svg)](https://pypi.org/project/django-schema-viewer)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-schema-viewer.svg)](https://pypi.org/project/django-schema-viewer)
 [![PyPI - Django Version](https://img.shields.io/pypi/djversions/django-schema-viewer.svg)](https://pypi.org/project/django-schema-viewer)
