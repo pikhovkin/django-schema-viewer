@@ -76,6 +76,7 @@ test-cov = "coverage run -m pytest {args:schema_viewer/tests}"
 cov-report = [
   "- coverage combine",
   "coverage report",
+  "coverage json",
 ]
 cov = [
   "test-cov",
