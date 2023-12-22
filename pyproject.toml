@@ -33,6 +33,7 @@ classifiers = [
   'Framework :: Django :: 4.0',
   'Framework :: Django :: 4.1',
   'Framework :: Django :: 4.2',
+  'Framework :: Django :: 5.0',
   'License :: OSI Approved :: MIT License',
   'Operating System :: OS Independent',
   "Programming Language :: Python",
@@ -45,7 +46,7 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = [
-  'Django>=4.0, <4.3',
+  'Django>=4.0, <5.1',
 ]
 
 [project.urls]
@@ -88,11 +89,12 @@ matrix.django.dependencies = [
   {value='Django~=4.0.0', if=['4.0']},
   {value='Django~=4.1.0', if=['4.1']},
   {value='Django~=4.2.0', if=['4.2']},
+  {value='Django~=5.0.0', if=['5.0']},
 ]
 
 [[tool.hatch.envs.all.matrix]]
 python = ["3.10", "3.11", "3.12"]
-django = ["4.0", "4.1", "4.2"]
+django = ["4.0", "4.1", "4.2", "5.0"]
 
 [tool.hatch.envs.typing]
 dependecies = [
