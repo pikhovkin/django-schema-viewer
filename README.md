@@ -12,6 +12,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 [![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-FFDD00)](https://www.buymeacoffee.com/pikhovkin)
+[![Donate](https://img.shields.io/liberapay/gives/pikhovkin.svg?logo=liberapay)](https://liberapay.com/pikhovkin)
 
 Visualizes a DB schema based on Django models.
 
