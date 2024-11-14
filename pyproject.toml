@@ -46,7 +46,7 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = [
-  'Django>=4.0, <5.1',
+  'Django>=4.0',
 ]
 
 [project.urls]
