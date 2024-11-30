@@ -7,7 +7,7 @@ name = "django-schema-viewer"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10, <3.14"
 license = "MIT"
 keywords = [
   'django',
@@ -34,6 +34,7 @@ classifiers = [
   'Framework :: Django :: 4.1',
   'Framework :: Django :: 4.2',
   'Framework :: Django :: 5.0',
+  'Framework :: Django :: 5.1',
   'License :: OSI Approved :: MIT License',
   'Operating System :: OS Independent',
   "Programming Language :: Python",
@@ -42,11 +43,12 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: System :: Monitoring",
   "Topic :: Utilities",
 ]
 dependencies = [
-  'Django>=4.0, <5.1',
+  'Django>=4.0, <5.2',
 ]
 
 [project.urls]
@@ -90,11 +92,12 @@ matrix.django.dependencies = [
   {value='Django~=4.1.0', if=['4.1']},
   {value='Django~=4.2.0', if=['4.2']},
   {value='Django~=5.0.0', if=['5.0']},
+  {value='Django~=5.1.0', if=['5.1']},
 ]
 
 [[tool.hatch.envs.all.matrix]]
-python = ["3.10", "3.11", "3.12"]
-django = ["4.0", "4.1", "4.2", "5.0"]
+python = ["3.10", "3.11", "3.12", "3.13"]
+django = ["4.0", "4.1", "4.2", "5.0", "5.1"]
 
 [tool.hatch.envs.typing]
 dependecies = [
@@ -137,7 +140,7 @@ plugins = ["mypy_django_plugin.main"]
 django_settings_module = "tests.conf.settings"
 
 [tool.black]
-target-version = ["py310"]
+target-version = ["py311"]
 line-length = 120
 skip-string-normalization = true
 
@@ -145,7 +148,7 @@ skip-string-normalization = true
 src = [
   'schema_viewer',
 ]
-target-version = "py310"
+target-version = "py311"
 line-length = 120
 select = [
   "A",

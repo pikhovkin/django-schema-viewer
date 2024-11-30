@@ -19,13 +19,16 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]  #, windows-latest, macos-latest]
-        python-version: ['3.10', '3.11', '3.12']
-#        django: ['Django>=4.0,<4.1', 'Django>=4.1,<4.2', 'Django>=4.2,<4.3']
+        python-version: [ '3.10', '3.11', '3.12', '3.13' ]
+        django: [ '4.0', '4.1', '4.2', '5.0', '5.1' ]
+        exclude:
+          - python-version: '3.13'
+            django: '4.0'
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python ${{ matrix.python-version }}, Django ${{ matrix.django }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
@@ -40,7 +43,7 @@ jobs:
       run: hatch run lint:all
 
     - name: Run tests
-      run: hatch run +py=${{ matrix.python-version }} all:cov
+      run: hatch run +py=${{ matrix.python-version }} +django=${{ matrix.django }} all:cov
 
     - name: Combine
       run: |
