@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "django-schema-viewer"
 dynamic = ["version"]
-description = ''
+description = "Visualizes a DB schema based on Django models"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -13,6 +13,8 @@ keywords = [
   'django',
   'database-gui',
   'django-models',
+  'django-schema',
+  'django-schema-graph',
   'database-schema',
   'entity-relationship-diagram',
   'er-diagram',
