@@ -61,9 +61,9 @@ def _make_resource(app: apps.AppConfig, model: type[models.Model], app_names: li
         elif not field.concrete:
             continue
         elif field.many_to_many:
-            if not field.auto_created and isinstance(field, models.ManyToManyRel):
+            if not field.auto_created and isinstance(field.remote_field, models.ManyToManyRel):
                 m2m_model = field.remote_field.through
-                if m2m_model._meta.auto_created:
+                if m2m_model is not None and m2m_model._meta.auto_created:
                     resources.extend(_make_resource(m2m_model._meta.app_config, m2m_model, app_names, excludes))
             continue
         elif field.model is not model:
