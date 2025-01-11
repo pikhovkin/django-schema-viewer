@@ -13,7 +13,10 @@ class ViewTest(TestCase):
             'auth_permission',
             'django_admin_log',
             'auth_group',
+            'auth_group_permissions',
             'auth_user',
+            'auth_user_user_permissions',
+            'auth_user_groups',
             'django_content_type',
             'django_session',
         }
